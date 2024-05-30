@@ -58,18 +58,6 @@ resource "pingone_role_assignment_user" "env_admin" {
   ]
 }
 
-resource "pingone_role_assignment_user" "davinci_admin" {
-  environment_id = var.pingone_environment_id != "" ? var.pingone_environment_id : var.pingone_environment_id
-  user_id        = var.admin_user_id
-  role_id        = data.pingone_role.davinci_admin.id
-
-  scope_environment_id = pingone_environment.master_flow_environment.id
-
-  depends_on = [
-    pingone_webhook.master_flow_webhook
-  ]
-}
-
 ##################
 #  Data Sources  #
 ##################
